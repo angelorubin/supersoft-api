@@ -1,15 +1,32 @@
+require("app-module-path").addPath(__dirname);
+require("dotenv").config();
+let knex = require("config/db");
 let createError = require("http-errors");
 let express = require("express");
 let path = require("path");
 let cookieParser = require("cookie-parser");
 let logger = require("morgan");
 const session = require("express-session");
-require("dotenv").config();
+let cors = require("cors");
+let bodyParser = require("body-parser");
 
-let authRouter = require("./routes/auth");
-let usersRouter = require("./routes/users");
+let authRouter = require("routes/auth");
+let usersRouter = require("routes/users");
 
 let app = express();
+
+// testing connection knex and postgres
+/*
+knex
+	.raw("SELECT 1")
+	.then(() => {
+		console.log("PostgreSQL connected");
+	})
+	.catch((e) => {
+		console.log("PostgreSQL not connected");
+		console.error(e);
+	});
+	*/
 
 app.use(
 	session({
@@ -23,12 +40,14 @@ app.use(
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "jade");
 
+// middlewares
+app.use(cors());
+app.use(bodyParser.json());
 app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
-
 app.use("/", authRouter);
 app.use("/users", usersRouter);
 
@@ -44,8 +63,12 @@ app.use(function (err, req, res, next) {
 	res.locals.error = req.app.get("env") === "development" ? err : {};
 
 	// render the error page
-	res.status(err.status || 500);
-	res.render("error");
+	// res.status(err.status || 500);
+	// res.render("error");
+	res.status(err.status || 500).json({
+		message: err.message,
+		error: err,
+	});
 });
 
 module.exports = app;
