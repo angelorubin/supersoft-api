@@ -4,16 +4,16 @@ let knex = require("config/db");
 
 /* GET Auth */
 router.get("/", function (req, res, next) {
-	res.json({ message: "GET Auth" });
+  res.json({ message: "GET auth" });
 });
 
 /* POST Auth */
 router.post("/", function (req, res, next) {
-	const { email, password } = req.body;
+  const { email, password } = req.body;
 
-	// console.log(knex.select("email").from("users"));
+  // console.log(knex.select("email").from("users"));
 
-	res.end();
+  res.end();
 });
 
 module.exports = router;
