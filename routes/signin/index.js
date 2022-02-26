@@ -1,13 +1,20 @@
 const express = require("express");
 const router = express.Router();
-// const db = require("config/db");
+const { createUser, getUsers } = require("./service");
+
+router.get("/", async (req, res, next) => {
+	const users = await getUsers();
+	console.log(users);
+	res.json({ message: "get route signin" });
+});
 
 /* POST signin */
-router.post("/", function (req, res, next) {
-  const { email, password_digest } = req.body;
-  console.log(email, password_digest);
+router.post("/", async function (req, res, next) {
+	const { email, password } = req.body;
 
-  res.json({ message: "POST signin route" });
+	const message = await createUser({ email, password });
+
+	res.json({ message });
 });
 
 module.exports = router;

@@ -3,9 +3,9 @@
  * @returns { Promise<void> }
  */
 exports.up = function (knex) {
-  knex.schema.alterTable("user", function (table) {
-    table.renameColumn("password_digest", "password");
-  });
+	return knex.schema.alterTable("user", function (table) {
+		table.renameColumn("password_digest", "password");
+	});
 };
 
 /**
