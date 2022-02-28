@@ -1,22 +1,22 @@
 const express = require("express");
 const router = express.Router();
-const db = require("config/db");
+const db = require("src/config/db");
 const { addUser } = require("./service");
 
 /* GET users listing */
 router.get("/", function (req, res, next) {
-  res.json({ message: "get route" });
+	res.json({ message: "get route" });
 });
 
 /* POST users */
 router.post("/", async function (req, res, next) {
-  const { email, password_digest } = req.body;
+	const { email, password_digest } = req.body;
 
-  const addUserResult = await addUser({ email, password_digest });
+	const addUserResult = await addUser({ email, password_digest });
 
-  res.json({ result: addUserResult });
+	res.json({ result: addUserResult });
 
-  /*
+	/*
 	try {
 		await db.transaction(async function (trx) {
 			const user = {

@@ -1,19 +1,19 @@
 let express = require("express");
 let router = express.Router();
-let db = require("config/db");
+let db = require("src/config/db");
 
 /* GET Auth */
 router.get("/", function (req, res, next) {
-  res.json({ message: "GET auth" });
+	res.json({ message: "GET auth" });
 });
 
 /* POST Auth */
 router.post("/", function (req, res, next) {
-  const { email, password } = req.body;
+	const { email, password } = req.body;
 
-  // console.log(db.select("email").from("users"));
+	// console.log(db.select("email").from("users"));
 
-  res.end();
+	res.end();
 });
 
 module.exports = router;

@@ -1,19 +1,20 @@
+const path = require("path");
+// const dirPath = path.join(__dirname, "/src/");
 require("app-module-path").addPath(__dirname);
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
-const knex = require("config/db");
 const createError = require("http-errors");
 let express = require("express");
-let path = require("path");
 let cookieParser = require("cookie-parser");
 let logger = require("morgan");
 let cors = require("cors");
 let bodyParser = require("body-parser");
 let app = express();
 
-let authRouter = require("routes/auth");
-let usersRouter = require("routes/users");
-let signinRouter = require("routes/signin");
+// router
+let authRouter = require("src/routes/auth");
+let usersRouter = require("src/routes/users");
+let signinRouter = require("src/routes/signin");
 
 app.use(cors());
 app.use(bodyParser.json());
