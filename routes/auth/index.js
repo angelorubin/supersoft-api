@@ -1,6 +1,6 @@
 let express = require("express");
 let router = express.Router();
-let knex = require("config/db");
+let db = require("config/db");
 
 /* GET Auth */
 router.get("/", function (req, res, next) {
@@ -11,7 +11,7 @@ router.get("/", function (req, res, next) {
 router.post("/", function (req, res, next) {
   const { email, password } = req.body;
 
-  // console.log(knex.select("email").from("users"));
+  // console.log(db.select("email").from("users"));
 
   res.end();
 });

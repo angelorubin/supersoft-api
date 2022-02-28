@@ -9,8 +9,11 @@ module.exports = {
       password: process.env.PG_PASS,
     },
     pool: {
-      min: 2,
-      max: 10,
+      min: 0,
+      max: 7,
+    },
+    seeds: {
+      directory: "./seeds/dev",
     },
     migrations: {
       tableName: "knex_migrations",
