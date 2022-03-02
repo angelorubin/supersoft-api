@@ -1,7 +1,6 @@
-const path = require("path");
-// const dirPath = path.join(__dirname, "/src/");
-require("app-module-path").addPath(__dirname);
 require("dotenv").config();
+require("app-module-path").addPath(__dirname);
+const path = require("path");
 const jwt = require("jsonwebtoken");
 const createError = require("http-errors");
 let express = require("express");
@@ -12,8 +11,7 @@ let bodyParser = require("body-parser");
 let app = express();
 
 // router
-let authRouter = require("src/routes/auth");
-let usersRouter = require("src/routes/users");
+let signupRouter = require("src/routes/signup");
 let signinRouter = require("src/routes/signin");
 
 app.use(cors());
@@ -24,8 +22,8 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/auth", authRouter);
-app.use("/users", usersRouter);
+// middlewares
+app.use("/signup", signupRouter);
 app.use("/signin", signinRouter);
 
 // catch 404 and forward to error handler

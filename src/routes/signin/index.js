@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { createUser, getUsers } = require("./service");
+const { signin } = require("../../controllers/userController");
 
 router.get("/", async (req, res, next) => {
 	const users = await getUsers();
@@ -8,13 +8,12 @@ router.get("/", async (req, res, next) => {
 	res.json({ message: "get route signin" });
 });
 
-/* POST signin */
 router.post("/", async function (req, res, next) {
 	const { email, password } = req.body;
 
-	const message = await createUser({ email, password });
+	signin();
 
-	res.json({ message });
+	res.json({ email, password });
 });
 
 module.exports = router;
