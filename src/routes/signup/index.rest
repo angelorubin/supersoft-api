@@ -7,5 +7,6 @@ content-type: application/json
 
 {
   "email":"test",
-  "password_digest":"test"
+  "password":"test",
+  "role":"admin"
 }

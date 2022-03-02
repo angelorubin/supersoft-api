@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const { signin } = require("../../controllers/userController");
 
 router.get("/", async (req, res, next) => {
 	const users = await getUsers();
@@ -10,8 +9,6 @@ router.get("/", async (req, res, next) => {
 
 router.post("/", async function (req, res, next) {
 	const { email, password } = req.body;
-
-	signin();
 
 	res.json({ email, password });
 });

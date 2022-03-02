@@ -13,8 +13,33 @@ async function validatePassword(plainPassword, hashedPassword) {
 exports.signup = async (req, res, next) => {
 	try {
 		const { email, password, role } = req.body;
+
 		const hashedPassword = await hashPassword(password);
 
+		res.json({ email, hashedPassword, role });
+
+		/*
+	try {
+		await db.transaction(async function (trx) {
+			const user = {
+				email,
+				password_digest,
+			};
+
+			db("user")
+				.insert(user)
+				.transacting(trx)
+				.returning(["email", "password_digest"])
+				.then((users) => {
+					res.json(users[0]);
+				});
+		});
+	} catch (error) {
+		return next(error);
+	}
+	*/
+
+		/*
 		const newUser = new User({
 			email,
 			password: hashedPassword,
@@ -30,11 +55,14 @@ exports.signup = async (req, res, next) => {
 		);
 
 		newUser.accessToken = accessToken;
+
 		await newUser.save();
+
 		res.json({
 			data: newUser,
 			accessToken,
 		});
+		*/
 	} catch (error) {
 		next(error);
 	}
