@@ -13,6 +13,7 @@ let app = express();
 // router
 let signupRouter = require("src/routes/signup");
 let signinRouter = require("src/routes/signin");
+let userRouter = require("src/routes/user");
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -25,6 +26,7 @@ app.use(express.static(path.join(__dirname, "public")));
 // middlewares
 app.use("/signup", signupRouter);
 app.use("/signin", signinRouter);
+app.use("/user", userRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

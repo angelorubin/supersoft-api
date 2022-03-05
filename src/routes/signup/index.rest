@@ -1,4 +1,6 @@
 @url = http://localhost:3000
+
+###
 GET {{url}}/signup HTTP/1.1
 content-type: application/json
 
@@ -8,7 +10,7 @@ content-type: application/json
 
 {
   "email":"angelorubin@gmail.com",
-  "password":"master77",
-  "role": null,
+  "password":"test",
+  "role": "admin",
   "access_token": null
 }
