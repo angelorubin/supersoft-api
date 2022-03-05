@@ -1,12 +1,14 @@
-GET http://localhost:3000/signup HTTP/1.1
+@url = http://localhost:3000
+GET {{url}}/signup HTTP/1.1
 content-type: application/json
 
 ###
-POST http://localhost:3000/signup HTTP/1.1
+POST {{url}}/signup HTTP/1.1
 content-type: application/json
 
 {
-  "email":"test",
-  "password":"test",
-  "role":"admin"
+  "email":"angelorubin@gmail.com",
+  "password":"master77",
+  "role": null,
+  "access_token": null
 }
