@@ -1,7 +1,13 @@
 const express = require("express");
 const router = express.Router();
-const { fetchUsers } = require("src/controllers/user");
+const {
+	fetchUsers,
+	fetchUser,
+	allowIfLoggedin,
+} = require("src/controllers/user");
 
-router.get("/", fetchUsers);
+router.get("/", allowIfLoggedin, fetchUsers);
+
+router.get("/:userId", fetchUser);
 
 module.exports = router;

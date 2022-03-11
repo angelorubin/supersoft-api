@@ -1,3 +1,7 @@
+/**
+ * Module dependencies.
+ */
+
 require("dotenv").config();
 require("app-module-path").addPath(__dirname);
 const path = require("path");
@@ -15,6 +19,8 @@ let signupRouter = require("src/routes/signup");
 let signinRouter = require("src/routes/signin");
 let userRouter = require("src/routes/user");
 
+// middlewares
+// app.use(createDatabase);
 app.use(cors());
 app.use(bodyParser.json());
 app.use(logger("dev"));
@@ -22,8 +28,27 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+app.use(async (req, res, next) => {
+	if (req.headers["x-access-token"]) {
+		const accessToken = req.headers["x-access-token"];
+		const { userId, exp } = await jwt.verify(
+			accessToken,
+			process.env.JWT_SECRET
+		);
+		// check if token has expired
+		if (exp < Date.now().valueOf() / 1000) {
+			return res.status(401).json({
+				error: "JWT token has expired, please login to obtain a new one",
+			});
+		}
+		// res.locals.loggedInUser = await User.findById(userId);
+		next();
+	} else {
+		next();
+	}
+});
 
-// middlewares
+// routes
 app.use("/signup", signupRouter);
 app.use("/signin", signinRouter);
 app.use("/user", userRouter);

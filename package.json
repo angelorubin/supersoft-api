@@ -1,11 +1,14 @@
 {
-	"name": "testing-debugger-node",
+	"name": "api-auth-acl",
 	"version": "0.0.0",
 	"private": true,
 	"scripts": {
-		"start": "nodemon ./bin/www"
+		"create-db": "node ./src/config/create-db.js",
+		"migrate-latest": "knex migrate:latest",
+		"start": "yarn create-db && yarn migrate-latest && nodemon ./bin/www"
 	},
 	"dependencies": {
+		"@databases/pg": "^5.4.1",
 		"accesscontrol": "^2.2.1",
 		"app-module-path": "^2.2.0",
 		"bcrypt": "^5.0.1",
@@ -18,10 +21,11 @@
 		"express": "~4.16.1",
 		"express-session": "^1.17.2",
 		"http-errors": "~1.6.3",
-		"jade": "~1.11.0",
 		"jsonwebtoken": "^8.5.1",
 		"knex": "^1.0.3",
 		"morgan": "~1.9.1",
-		"pg": "^8.7.3"
+		"pg": "^8.7.3",
+		"pg-promise": "^10.11.1",
+		"pgtools": "^0.3.2"
 	}
 }

@@ -9,8 +9,8 @@ POST {{url}}/signup HTTP/1.1
 content-type: application/json
 
 {
-  "email":"manoelarubin@gmail.com",
+  "email":"angelorubin@gmail.com",
   "password":"test",
-  "role": "",
-  "access_token": ""
+  "role": "admin",
+  "access_token": null
 }
