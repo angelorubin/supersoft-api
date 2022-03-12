@@ -76,8 +76,10 @@ Vá até o Adminer (no browser) e verifique se tudo ocorreu como esperado.
 
 ## Cadastrando usuário na API
 
-Para cadastrar um usuário na API precisamos de um software tipo (postman, insomnia) que nos ajude a fazer requisições HTTP, porém optei por algo mais pragmático e utilizei a extensão do VSCode chamada <a target="_blank" href="https://bit.ly/37j56DL">REST-Client</a>
+Após o inicio da API, para cadastrar um usuário precisamos de um software do tipo do (postman, insomnia, etc) que nos ajude a fazer requisições HTTP em nossos endpoints, porém optei por algo mais pragmático e utilizei a extensão do VSCode chamada <a target="_blank" href="https://bit.ly/37j56DL">REST-Client</a>, o que facilita também que outros desenvolvedores (de uma possível equipe) também possam testar os endpoints na própria API sem instalar outras ferramentas.
 
-Depois de instalada a extensão basta ir até a pasta `src/routes` no projeto e dentro de cada subpasta existe uma arquivo com a extensão `.rest` e este arquivo é responsavel pelo nossos testes (GET, POST, etc) nos endpoints da API.
+Depois de instalada a extensão basta ir até a pasta `src/routes` no projeto, dentro de cada subpasta existe uma arquivo com a extensão `.rest` e este arquivo é responsavel pelo nossas requisições (GET, POST, etc) nos endpoints da API.
 
 Dentro da subpasta `src/routes/signup` acessamos o arquivo `index.rest` e clicamos em `Send Request` na requisição `POST`.
+
+Um novo usuário será cadastrado e isto pode ser visto pelo Adminer.
