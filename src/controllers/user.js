@@ -13,7 +13,7 @@ exports.fetchUsers = async (req, res, next) => {
 	}
 };
 
-exports.fetchUser = async (req, res, next) => {
+exports.fetchUserById = async (req, res, next) => {
 	try {
 		const userId = req.params.userId;
 		console.log(userId);

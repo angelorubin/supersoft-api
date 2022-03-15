@@ -11,6 +11,5 @@ content-type: application/json
 {
   "email":"test@test.com",
   "password":"test",
-  "role": "",
-  "access_token": ""
+  "role": "basic"
 }

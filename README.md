@@ -6,7 +6,7 @@ API Skeleton é um boilerplate (estrutura inicial) de uma API desenvolvida com o
 
 Ela inclui um sistema de autenticação através de (email e password) e controle de acesso baseado em função, [RBAC](https://bit.ly/34B4dWl) (role-based access control).
 
-A idéia é facilitar a criação de API's com as necessidades básicas já implementadas, tais como: login e controle de acesso por função, e desta forma deixando que você foque com rapidez em outras funcionalidades importantes de sua API.
+A idéia é facilitar a criação de API's com as necessidades básicas já implementadas, tais como: login e RBAC (controle de acesso por função), para que possamos focar em desenvolver outras funcionalidades importantes da API.
 
 ## Requisitos básicos (para rodar localmente)
 
@@ -90,12 +90,12 @@ Após o inicio da API, para cadastrar um usuário precisamos de algum software s
 
 Esta extensão facilita que outros desenvolvedores (de uma possível equipe) também possam testar os endpoints na própria API sem instalar outras ferramentas como as citadas acima.
 
-Após a instalação da extensão basta ir até a pasta `src/routes`, dentro de cada subpasta existe um arquivo com a extensão `.rest` e este tipo de arquivo é que será responsavel pelo nossas requisições HTTP (GET, POST, etc) nos endpoints de cada rota da API.
+Após a instalação da extensão basta ir até a pasta `src/routes`, dentro de cada subpasta existe um arquivo com a extensão `.rest` e este tipo de arquivo é que será responsavel pelas nossas requisições HTTP (GET, POST, etc) nos endpoints da API.
 
 Por exemplo, dentro da subpasta `src/routes/signup` acessamos o arquivo `index.rest` e clicamos em `Send Request` na requisição `POST`.
 
-Um novo usuário será cadastrado e isto pode ser conferido pela aba que se abrirá ao lado (no VSCode) do arquivo `index.rest`.
+Um novo usuário será cadastrado e os dados confirmando a resposta da API podem ser conferidos pela aba que se abrirá ao lado (no VSCode) do arquivo `index.rest`.
 
-## Logando na API e obtendo um token de acesso
+## Fazendo Login e obtendo um token de acesso
 
-Após a criação do nosso usuário precisamos fazer login na nossa aplicação para que um `token` de acesso seja gerado.
+Após a criação do nosso usuário precisamos fazer login na nossa aplicação para que um `token` de acesso único seja gerado.
