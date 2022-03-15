@@ -1,12 +1,18 @@
 # API Skeleton
 
-![api structure](https://i.imgur.com/VgSHYVN.jpg)
+![api structure](https://i.imgur.com/Mcbej5F.png)
 
-API Skeleton é um boilerplate (estrutura inicial) de uma API desenvolvida com o framework [Express.js](https://expressjs.com/pt-br/starter/generator.html) que é baseado em ambiente [Node.js](https://bit.ly/37gHEaf).
+API Skeleton é um boilerplate (estrutura inicial) de uma [API REST](https://www.redhat.com/pt-br/topics/api/what-is-a-rest-api), sua estrutura é desenvolvida com o framework [Express.js](https://expressjs.com/pt-br/starter/generator.html) que é baseado em ambiente [Node.js](https://bit.ly/37gHEaf).
 
-Ela inclui um sistema de autenticação através de (email e password) e controle de acesso baseado em função, [RBAC](https://bit.ly/34B4dWl) (role-based access control).
+Ela já possui implementado um sistema de autenticação através de (email e password) e controle de acesso baseado em função/papel, [RBAC](https://bit.ly/34B4dWl) (role-based access control).
 
-A idéia é facilitar a criação de API's com as necessidades básicas já implementadas, tais como: login e RBAC (controle de acesso por função), para que possamos focar em desenvolver outras funcionalidades importantes da API.
+## Motivação
+
+A idéia principal é agilizar a criação de API's REST com as necessidades básicas prontas para uso, tais como:
+
+- Sistema de autenticação básico (email e password)
+
+* Sistema de autorização (RBAC - controle de acesso de usuário baseado em função/papel)
 
 ## Requisitos básicos (para rodar localmente)
 
