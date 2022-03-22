@@ -31,8 +31,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
-
-const verifyToken = async (req, res, next) => {
+/**
+ * authenticity check and token expiration check
+ */
+app.use(async (req, res, next) => {
 	const token = req.headers["authorization"].split(" ")[1];
 	const secret = process.env.JWT_SECRET;
 
@@ -72,9 +74,7 @@ const verifyToken = async (req, res, next) => {
 
 	// res.locals.loggedInUser = payload.users[0].id;
 	*/
-};
-
-app.use(verifyToken);
+});
 
 /**
  * routes

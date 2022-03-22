@@ -7,7 +7,7 @@ const {
 	grantAccess,
 } = require("src/controllers/user");
 
-router.get("/", fetchUsers);
+router.get("/", allowIfLoggedin, fetchUsers);
 
 router.get("/:userId", fetchUserById);
 

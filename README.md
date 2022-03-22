@@ -32,29 +32,37 @@ Para verificar se o Node, Yarn e o Docker foram instalados e estão funcionando 
 
 `docker -v`
 
-Desta forma cada comando exibirá respectivamente no console as suas versões instaladas.
+Desta forma cada comando exibirá respectivamente no console as suas versões instaladas semelhante a imagem abaixo:
+
+![Node Yarn Docker](https://i.imgur.com/rYt0Rjo.png)
 
 ## Criando o container Docker com PostgreSQL e Adminer
 
-Após a instalação dos itens acima, você pode baixar ou clonar este repositório para a pasta que desejar em seu computador.
+Após a conclusão da instalação dos itens acima, você pode baixar ou clonar este repositório para o seu computador.
 
-> Antes de qualquer ação é necessário modificar o nome do arquivo `.env.local` (na raíz do projeto) para `.env` e preencher as informações das variáveis de ambiente contidas nele, para que elas possam ser acessadas corretamente pela API.
+> O primeiro passo antes de qualquer ação é modificar o nome do arquivo `.env.local` (na raíz do projeto) para `.env` e preencher as informações das variáveis de ambiente contidas nele, para que elas possam ser acessadas corretamente pela API.
 
-Em seguida, abra a pasta onde você colocou os arquivos da API, abra o console de sua preferência apontando para esta pasta e digite o seguinte comando:
+Em seguida, abra a pasta onde você baixou a API, abra um console de sua preferência apontando para esta pasta e digite o seguinte comando:
 
 `docker-compose up -d`
 
-> Na raíz do projeto existe um arquivo chamado **docker-compose.yml**, este arquivo será executado pela instrução citada acima. Este arquivo possui todas as configurações necessárias para que o nosso container seja criado pelo docker, incluindo o banco de dados [PostgreSQL](https://hub.docker.com/_/postgres) e o painel gerenciador de banco de dados [Adminer](https://hub.docker.com/_/adminer).
+Se tudo ocorrer bem, uma imagem semelhante a abaixo deverá ser exibida:
 
-Desta forma o ambiente (local) estará configurado e funcional para que a API possa utilizá-lo.
+![docker compose up -d](https://i.imgur.com/0Owk8uA.png)
 
-> O Docker facilita muito as coisas para o trabalho em equipe e evita que os desenvolvedores do projeto (que podem utilizar sistemas operacionais diferentes) se preocupem em instalar manualmente estas duas (entre outras) ferramentas o que pode acabar gerando muita incompatibilidade de versões no projeto.
+> Na raíz do projeto existe um arquivo chamado **docker-compose.yml**, este arquivo será executado pela instrução citada acima. Ele possui todas as configurações necessárias para que o nosso container seja criado pelo docker, incluindo um banco de dados [PostgreSQL](https://hub.docker.com/_/postgres) e um painel gerenciador de banco de dados, o [Adminer](https://hub.docker.com/_/adminer).
+
+Se quiser saber mais sobre o docker-compose você pode ver neste [link](https://docs.docker.com/compose).
+
+Desta forma nossa infra-estrutura (local) com nosso container Docker estará configurada e funcional para que a API possa utilizá-la.
+
+> O Docker facilita muito as coisas para o trabalho em equipe e evita que os desenvolvedores do projeto (que podem utilizar sistemas operacionais diferentes) se preocupem em instalar manualmente estas duas (entre outras) ferramentas, o que pode acabar gerando muita incompatibilidade de versões no projeto.
 
 Para confirmar que tudo esta funcionando corretamente, abra o navegador e digite:
 
 _http://localhost:8080_
 
-Uma imagem semelhante a esta deve aparecer:
+Você deverá ver uma imagem semelhante a esta:
 
 ![alt text](https://i.imgur.com/eA9sl28.png)
 
@@ -80,13 +88,13 @@ Para isso abra o console e digite:
 
 `yarn start`
 
-Três etapas necessárias acontecem ao acionarmos este comando:
+Três etapas necessárias ocorrem ao executarmos este comando:
 
-1. Criação da base de dados com o nome `test` (padrão)
+1. Criação da base de dados com o nome `test` (por padrão).
 
-2. Execução das [migrations](https://knexjs.org/#Migrations) do knex para criação da tabela `user` no banco
+2. Execução das [migrations](https://knexjs.org/#Migrations) do knex para criação da tabela `user` no banco.
 
-3. Inicia a API
+3. Inicia a API.
 
 Vá até o Adminer (no browser) e verifique se tudo ocorreu como esperado.
 
