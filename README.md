@@ -64,7 +64,7 @@ _http://localhost:8080_
 
 Você deverá ver uma imagem semelhante a esta:
 
-![alt text](https://i.imgur.com/eA9sl28.png)
+![alt text](https://i.imgur.com/eA9sl28.png?1)
 
 Esta é a interface do Adminer, através dela podemos gerenciar as informações do nosso banco de dados.
 
