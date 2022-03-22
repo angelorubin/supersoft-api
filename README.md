@@ -36,7 +36,7 @@ Desta forma cada comando exibirá respectivamente no console as suas versões in
 
 ![Node Yarn Docker](https://i.imgur.com/rYt0Rjo.png)
 
-## Criando o container Docker com PostgreSQL e Adminer
+## Montando o container Docker com PostgreSQL e Adminer
 
 Após a conclusão da instalação dos itens acima, você pode baixar ou clonar este repositório para o seu computador.
 
@@ -81,6 +81,16 @@ Para acessa-la basta preencher com as informações abaixo:
 * Base de dados : `test`
 
 > Estas informações podem ser modificadas no arquivo _.env_ na raíz do projeto.
+
+## Desmontando o container Docker
+
+Para isso basta abrir o console e digitar:
+
+`docker-compose down`
+
+Você deverá obter uma imagem semelhante a abaixo:
+
+![docker-compose down](https://i.imgur.com/KPL1jSN.png)
 
 ## Iniciando a API
 
