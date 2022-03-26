@@ -1,5 +1,5 @@
 @url = http://localhost:3000
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY0NzM3MTMwMCwiZXhwIjoxNjQ3NDU3NzAwfQ.qAX1DJWbtLRurUC339tqWChwDzj1-1sCn_X7RjSetKw
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDgzMTI3MjUsImV4cCI6MTY0ODM5OTEyNX0.yrlCrksXnJGDoU1vzr97FFRMxGjq_9myAAuiOtqghYM
 
 ###
 POST {{url}}/signin 

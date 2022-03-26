@@ -32,14 +32,15 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 /**
- * authenticity check and token expiration check
+ * checking token verification and expiration
  */
 app.use(async (req, res, next) => {
-	const token = req.headers["authorization"].split(" ")[1];
+	let token = req.headers["authorization"];
 	const secret = process.env.JWT_SECRET;
 
 	if (token) {
-		const { userId, exp } = await jwt.verify(token, secret);
+		token = token.split(" ")[1];
+		const { userId, exp } = jwt.verify(token, secret);
 		// Check if token has expired
 		if (exp < Date.now().valueOf() / 1000) {
 			return res.status(401).json({

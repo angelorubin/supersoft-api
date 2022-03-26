@@ -27,9 +27,11 @@ exports.signin = async (req, res, next) => {
 			expiresIn: "1d",
 		});
 
-		let userUpdate = await User.where({ id: user.id }).fetch({ require: true });
-		userUpdate.set({ access_token: accessToken });
-		userUpdate.save();
+		let updateAccessToken = await User.where({ id: user.id }).fetch({
+			require: true,
+		});
+		updateAccessToken.set({ access_token: accessToken });
+		updateAccessToken.save();
 
 		res.status(200).json({
 			data: { email: user.email, role: user.role },

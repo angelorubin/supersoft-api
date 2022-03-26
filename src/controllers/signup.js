@@ -12,6 +12,10 @@ exports.createUser = async (req, res, next) => {
 
 		const hashedPassword = await hashPassword(password);
 
+		const user = JSON.stringify(User);
+
+		res.json({ user });
+
 		/*
 	try {
 		await db.transaction(async function (trx) {
@@ -33,6 +37,7 @@ exports.createUser = async (req, res, next) => {
 	}
 	*/
 
+		/**
 		const newUser = new User({
 			email,
 			password: hashedPassword,
@@ -55,6 +60,7 @@ exports.createUser = async (req, res, next) => {
 			data: newUser,
 			accessToken,
 		});
+		*/
 	} catch (error) {
 		next(error);
 	}
