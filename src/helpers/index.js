@@ -7,3 +7,7 @@ exports.hashPassword = async function (password) {
 exports.validatePassword = async function (plainPassword, hashedPassword) {
 	return await bcrypt.compare(plainPassword, hashedPassword);
 };
+
+exports.getToken = async (token) => {
+	return await token.split(" ")[1];
+};

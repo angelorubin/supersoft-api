@@ -13,6 +13,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const app = express();
 const User = require("src/models/user");
+const { getToken } = require("./src/helpers");
 
 /**
  * router
@@ -34,29 +35,65 @@ app.use(express.static(path.join(__dirname, "public")));
 /**
  * checking token verification and expiration
  */
+
 app.use(async (req, res, next) => {
-	let token = req.headers["authorization"];
-	const secret = process.env.JWT_SECRET;
+	const token = await getToken(req.headers["authorization"]);
 
 	if (token) {
-		token = token.split(" ")[1];
-		const { userId, exp } = jwt.verify(token, secret);
+		const { id, exp } = await jwt.verify(token, process.env.JWT_SECRET);
+
 		// Check if token has expired
 		if (exp < Date.now().valueOf() / 1000) {
 			return res.status(401).json({
 				error: "JWT token has expired, please login to obtain a new one",
 			});
 		}
-		const { attributes } = await User.where({ id: userId }).fetch();
-		const { id, email, role } = attributes;
 
-		res.locals.loggedInUser = { id, email, role };
+		const { attributes } = await User.where({ id }).fetch();
+
+		console.log(attributes);
+
+		res.locals.loggedInUser = { ...attributes };
+
 		next();
 	} else {
 		next();
 	}
+});
 
-	/*
+/**
+app.use(async (req, res, next) => {
+	let token = req.headers["authorization"];
+	const secret = process.env.JWT_SECRET;
+
+	if (token) {
+		token = token.split(" ")[1];
+
+		jwt.verify(token, secret, (err, decoded) => {
+			const { id, exp } = decoded;
+
+			// Check if token has expired
+			if (exp < Date.now().valueOf() / 1000) {
+				return res.status(401).json({
+					error: "JWT token has expired, please login to obtain a new one",
+				});
+			}
+
+			const user = await new User.where({ id }).fetch();
+			
+			// const { id, email, role } = attributes;
+
+			// res.locals.loggedInUser = { ...user.attributes };
+
+			next();
+		});
+
+		
+	} else {
+		next();
+	}
+
+	
 	if (!req.headers.authorization || !req.headers.authorization === null) {
 		return res.status(401).send("Unauthorized request 1");
 	}
@@ -74,8 +111,9 @@ app.use(async (req, res, next) => {
 	next();
 
 	// res.locals.loggedInUser = payload.users[0].id;
-	*/
+
 });
+*/
 
 /**
  * routes
