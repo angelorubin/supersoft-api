@@ -1,46 +1,32 @@
 # Índice
 
-- [Sobre a API Skeleton]()
-
-- [Motivação](https://bit.ly/3ugzXZK)
+- [Sobre a API]()
 
 - [Requisitos básicos]()
 
-- [Montando o container Docker com PostgreSQL e Adminer]()
+- [Montando o container Docker]()
 
 - [Desmontando o container Docker]()
 
-- [Iniciando a API]()
+- [Inicializando a API]()
 
-- [Cadastrando um usuário API]()
+- [Cadastrando um usuário]()
 
-## API Skeleton
+## Sobre a API
 
-![api structure](https://i.imgur.com/Mcbej5F.png)
+[API RESTfull](https://red.ht/3jBYZ0k) desenvolvida para o desafio da Supersoft, sua estrutura é baseada no framework [Express.js](https://bit.ly/36dtcQb) e no [Node.js](https://bit.ly/37gHEaf).
 
-API Skeleton é um boilerplate (estrutura inicial) de uma [API REST](https://www.redhat.com/pt-br/topics/api/what-is-a-rest-api), sua estrutura é desenvolvida com o framework [Express.js](https://expressjs.com/pt-br/starter/generator.html) que é baseado em ambiente [Node.js](https://bit.ly/37gHEaf).
+## Requisitos básicos
 
-Ela já possui implementado um sistema de autenticação através de (email e password) e controle de acesso baseado em função/papel, [RBAC](https://bit.ly/34B4dWl) (role-based access control).
-
-## Motivação
-
-A idéia principal é agilizar a criação de API's REST com as necessidades básicas prontas para uso, tais como:
-
-- Sistema de autenticação básico (email e password)
-
-* Sistema de autorização (RBAC - controle de acesso de usuário baseado em função/papel)
-
-## Requisitos básicos (para rodar localmente)
-
-É necessária a instalação das seguintes ferramentas/tecnologias em seu sistema operacional para que a API possa funcionar corretamente:
+É necessário a instalação das seguintes ferramentas/tecnologias em seu sistema operacional para que a API possa funcionar corretamente:
 
 - Node - <a target="_blank" href="https://nodejs.org/en/download">como instalar</a>
 
-* Yarn - <a target="_blank" href="https://community.chocolatey.org/packages/yarn">como instalar</a>
+- Yarn - <a target="_blank" href="https://community.chocolatey.org/packages/yarn">como instalar</a>
 
-- Docker - <a target="_blank" href="https://docs.docker.com/desktop/windows/install">como instalar</a>
+- Docker (é obrigatório habilitar a virtualização na BIOS da sua placa-mãe) - <a target="_blank" href="https://dockr.ly/3vmJu1A">como instalar</a>
 
-Para verificar se o Node, Yarn e o Docker foram instalados e estão funcionando corretamente, abra o console e digite os comandos (um de cada vez):
+Após a instalação, para verificar se o Node, Yarn e o Docker foram instalados corretamente, abra o console e digite os seguintes comandos (um por vez):
 
 `node -v`
 
@@ -48,11 +34,11 @@ Para verificar se o Node, Yarn e o Docker foram instalados e estão funcionando 
 
 `docker -v`
 
-Desta forma cada comando exibirá respectivamente no console as suas versões instaladas semelhante a imagem abaixo:
+Desta forma cada comando exibirá respectivamente no console as suas versões instaladas, semelhante a imagem abaixo:
 
 ![Node Yarn Docker](https://i.imgur.com/rYt0Rjo.png)
 
-## Montando o container Docker com PostgreSQL e Adminer
+## Inicializando o container Docker com PostgreSQL e Adminer
 
 Após a conclusão da instalação dos itens acima, você pode baixar ou clonar este repositório para o seu computador.
 
@@ -62,23 +48,23 @@ Em seguida, abra a pasta onde você baixou a API, abra um console de sua prefer�
 
 `docker-compose up -d`
 
-Se tudo ocorrer bem, uma imagem semelhante a abaixo deverá ser exibida:
+Uma imagem semelhante a abaixo deverá ser exibida:
 
 ![docker compose up -d](https://i.imgur.com/0Owk8uA.png)
 
-> Na raíz do projeto existe um arquivo chamado **docker-compose.yml**, este arquivo será executado pela instrução citada acima. Ele possui todas as configurações necessárias para que o nosso container seja criado pelo docker, incluindo um banco de dados [PostgreSQL](https://hub.docker.com/_/postgres) e um painel gerenciador de banco de dados, o [Adminer](https://hub.docker.com/_/adminer).
+> Na raíz do projeto existe um arquivo chamado **docker-compose.yml**, este arquivo será executado pela instrução citada acima. Ele possui todas as configurações necessárias para que o nosso container seja criado pelo docker, incluindo um banco de dados [PostgreSQL](https://hub.docker.com/_/postgres) e um gerenciador de banco de dados, o [Adminer](https://hub.docker.com/_/adminer).
 
 Se quiser saber mais sobre o docker-compose você pode ver neste [link](https://docs.docker.com/compose).
 
-Desta forma nossa infra-estrutura (local) com nosso container Docker estará configurada e funcional para que a API possa utilizá-la.
+Desta forma nossa infraestrutura (local), com nosso container docker, estará configurada e funcional para que a API possa utilizá-la.
 
-> O Docker facilita muito as coisas para o trabalho em equipe e evita que os desenvolvedores do projeto (que podem utilizar sistemas operacionais diferentes) se preocupem em instalar manualmente estas duas (entre outras) ferramentas, o que pode acabar gerando muita incompatibilidade de versões no projeto.
+> O Docker trabalha com [conteinerização](https://bit.ly/3OdVfAn) e facilita muito as coisas para o trabalho em equipe e evita que os desenvolvedores de um projeto (que podem utilizar ambientes de desenvolvimento diferentes) se preocupem em instalar localmente estas (dentre outras) ferramentas, o que pode acabar gerando muita incompatibilidade nos diferentes ambientes.
 
 Para confirmar que tudo esta funcionando corretamente, abra o navegador e digite:
 
 _http://localhost:8080_
 
-Você deverá ver uma imagem semelhante a esta:
+Você deverá ver uma imagem semelhante a esta abaixo:
 
 ![alt text](https://i.imgur.com/eA9sl28.png?1)
 
@@ -100,15 +86,15 @@ Para acessa-la basta preencher com as informações abaixo:
 
 ## Desmontando o container Docker
 
-Para isso basta abrir o console e digitar:
+Caso queira desmontar o container que foi criado acima, basta abrir o console e digitar:
 
 `docker-compose down`
 
-Você deverá obter uma imagem semelhante a abaixo:
+Você deve obter uma imagem semelhante a esta abaixo:
 
 ![docker-compose down](https://i.imgur.com/KPL1jSN.png)
 
-## Iniciando a API
+## Inicializando a API
 
 Para isso abra o console e digite:
 

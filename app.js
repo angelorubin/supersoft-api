@@ -18,9 +18,7 @@ const { getToken } = require("./src/helpers");
 /**
  * router
  */
-const signupRouter = require("src/routes/signup");
-const signinRouter = require("src/routes/signin");
-const userRouter = require("src/routes/user");
+const vacinaRouter = require("src/routes/vacina");
 
 /**
  * middlewares

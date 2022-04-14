@@ -1,5 +1,5 @@
 /**
- * Script para criação do banco de dados antes do start da API
+ * Script para criação do banco de dados (padrão) antes da inicialização da API
  */
 
 require("dotenv").config();
