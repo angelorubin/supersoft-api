@@ -121,7 +121,3 @@ Após a instalação da extensão basta ir até a pasta `src/routes`, dentro de 
 Por exemplo, dentro da subpasta `src/routes/signup` acessamos o arquivo `index.rest` e clicamos em `Send Request` na requisição `POST`.
 
 Um novo usuário será cadastrado e os dados confirmando a resposta da API podem ser conferidos pela aba que se abrirá ao lado (no VSCode) do arquivo `index.rest`.
-
-## Fazendo Login e obtendo um token de acesso
-
-Após a criação do nosso usuário precisamos fazer login na nossa aplicação para que um `token` de acesso único seja gerado.

@@ -12,13 +12,12 @@ const logger = require("morgan");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const app = express();
-const User = require("src/models/user");
-const { getToken } = require("./src/helpers");
+// const { getToken } = require("./src/helpers");
 
 /**
  * router
  */
-const vacinaRouter = require("src/routes/vacina");
+const vaccineRouter = require("src/routes/vaccine");
 
 /**
  * middlewares
@@ -34,30 +33,32 @@ app.use(express.static(path.join(__dirname, "public")));
  * checking token verification and expiration
  */
 
+/**
 app.use(async (req, res, next) => {
-	const token = await getToken(req.headers["authorization"]);
+  const token = await getToken(req.headers["authorization"]);
 
-	if (token) {
-		const { id, exp } = await jwt.verify(token, process.env.JWT_SECRET);
+  if (token) {
+    const { id, exp } = await jwt.verify(token, process.env.JWT_SECRET);
 
-		// Check if token has expired
-		if (exp < Date.now().valueOf() / 1000) {
-			return res.status(401).json({
-				error: "JWT token has expired, please login to obtain a new one",
-			});
-		}
+    // Check if token has expired
+    if (exp < Date.now().valueOf() / 1000) {
+      return res.status(401).json({
+        error: "JWT token has expired, please login to obtain a new one",
+      });
+    }
 
-		const { attributes } = await User.where({ id }).fetch();
+    const { attributes } = await User.where({ id }).fetch();
 
-		console.log(attributes);
+    console.log(attributes);
 
-		res.locals.loggedInUser = { ...attributes };
+    res.locals.loggedInUser = { ...attributes };
 
-		next();
-	} else {
-		next();
-	}
+    next();
+  } else {
+    next();
+  }
 });
+*/
 
 /**
 app.use(async (req, res, next) => {
@@ -78,7 +79,7 @@ app.use(async (req, res, next) => {
 			}
 
 			const user = await new User.where({ id }).fetch();
-			
+
 			// const { id, email, role } = attributes;
 
 			// res.locals.loggedInUser = { ...user.attributes };
@@ -86,12 +87,12 @@ app.use(async (req, res, next) => {
 			next();
 		});
 
-		
+
 	} else {
 		next();
 	}
 
-	
+
 	if (!req.headers.authorization || !req.headers.authorization === null) {
 		return res.status(401).send("Unauthorized request 1");
 	}
@@ -116,25 +117,23 @@ app.use(async (req, res, next) => {
 /**
  * routes
  */
-app.use("/signup", signupRouter);
-app.use("/signin", signinRouter);
-app.use("/user", userRouter);
+app.use("/vaccine", vaccineRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
-	next(createError(404));
+  next(createError(404));
 });
 
 // error handler
 app.use(function (err, req, res, next) {
-	// set locals, only providing error in development
-	res.locals.message = err.message;
-	res.locals.error = req.app.get("env") === "development" ? err : {};
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get("env") === "development" ? err : {};
 
-	res.status(err.status || 500).json({
-		message: err.message,
-		error: err,
-	});
+  res.status(err.status || 500).json({
+    message: err.message,
+    error: err,
+  });
 });
 
 module.exports = app;
