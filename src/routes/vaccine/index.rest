@@ -9,12 +9,12 @@ POST {{url}}/vaccine
 content-type: application/json
 
 {
-  "nome_vacina": "a",
-  "nome_fabricante": "a",
-  "pais_origem": "a",
-  "quantidade_minimas_doses": "a",
-  "percentual_eficacia_comprovada": "a",
-  "preco_venda_por_dose": "a"
+  "nomeVacina": "a",
+  "nomeFabricante": "a",
+  "paisOrigem": "a",
+  "quantidadeMinimasDoses": "a",
+  "percentualEficaciaComprovada": "a",
+  "precoVendaPorDose": "a"
 }
 
 ###
