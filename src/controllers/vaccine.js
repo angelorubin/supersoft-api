@@ -3,12 +3,14 @@ const bookshelf = require("src/config/db");
 
 exports.retrieveVaccines = async (req, res, next) => {
 	try {
-		const results = await new Vaccine().fetchPage({}).then(function (results) {
-			return results;
-		});
+		const vaccines = await new Vaccine()
+			.fetchPage({})
+			.then(function (vaccines) {
+				return vaccines;
+			});
 
 		res.json({
-			results,
+			vaccines,
 		});
 	} catch (error) {
 		next(error);
@@ -89,4 +91,17 @@ exports.update = async (req, res, next) => {
 	}
 };
 
-exports.destroy = async (req, res, next) => {};
+exports.destroy = async (req, res, next) => {
+	const { id } = req.params;
+
+	try {
+		await new Vaccine({ id }).destroy().then(function (result) {
+			res.json({
+				error: false,
+				data: { message: "A vacina foi deletada com sucesso." },
+			});
+		});
+	} catch (error) {
+		res.json({ error: true, data: { message: err.message } });
+	}
+};

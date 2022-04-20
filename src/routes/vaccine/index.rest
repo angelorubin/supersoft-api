@@ -1,11 +1,12 @@
-@url = http://localhost:3001
+@url = http://localhost:3001/vaccine
+@id = 156
 
 ###
-GET {{url}}/vaccine
+GET {{url}}/
 content-type: application/json
 
 ###
-POST {{url}}/vaccine
+POST {{url}}/
 content-type: application/json
 
 {
@@ -18,13 +19,17 @@ content-type: application/json
 }
 
 ###
-GET {{url}}/vaccine/37
+GET {{url}}/{{id}}
 content-type: application/json
 
 ###
-PATCH {{url}}/vaccine/37
+PATCH {{url}}/{{id}}
 content-type: application/json
 
 {
   "nome_vacina": "a"
 }
+
+###
+PUT {{url}}/{{id}}
+content-type: application/json
