@@ -12,6 +12,6 @@ router.get("/", retrieveVaccines);
 router.post("/", create);
 router.get("/:id", retrieveVaccineById);
 router.patch("/:id", update);
-router.delete("/:id", destroy);
+router.put("/:id", destroy);
 
 module.exports = router;
