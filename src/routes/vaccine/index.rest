@@ -1,5 +1,5 @@
 @url = http://localhost:3001/vaccine
-@id = 156
+@id = 100
 
 ###
 GET {{url}}/
@@ -31,5 +31,5 @@ content-type: application/json
 }
 
 ###
-PUT {{url}}/{{id}}
+DELETE {{url}}/{{id}}
 content-type: application/json
