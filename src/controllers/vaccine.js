@@ -79,10 +79,8 @@ exports.update = async (req, res, next) => {
 	try {
 		const { id } = req.params;
 
-		const { nome_vacina } = req.body;
-
 		const vaccine = await Vaccine.where({ id })
-			.save({ nome_vacina }, { patch: true })
+			.save(req.body, { patch: true })
 			.then((vaccine) => vaccine);
 
 		res.json({ vaccine });
@@ -102,6 +100,6 @@ exports.destroy = async (req, res, next) => {
 			});
 		});
 	} catch (error) {
-		res.json({ error: true, data: { message: err.message } });
+		res.json({ error: true, data: { message: error.message } });
 	}
 };
