@@ -1,5 +1,5 @@
 @url = http://localhost:3001/vaccine
-@id = 100
+@id = 226
 
 ###
 GET {{url}}/
@@ -27,7 +27,8 @@ PATCH {{url}}/{{id}}
 content-type: application/json
 
 {
-  "nome_vacina": "a"
+  "nome_vacina": "z",
+  "nome_fabricante": "z"
 }
 
 ###
