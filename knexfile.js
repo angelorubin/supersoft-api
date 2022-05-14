@@ -20,8 +20,7 @@ module.exports = {
 			tableName: "knex_migrations",
 		},
 	},
-
-	staging: {
+	production: {
 		client: "postgresql",
 		connection: {
 			database: "my_db",
@@ -36,8 +35,7 @@ module.exports = {
 			tableName: "knex_migrations",
 		},
 	},
-
-	production: {
+	staging: {
 		client: "postgresql",
 		connection: {
 			database: "my_db",
